@@ -5,7 +5,9 @@ import Promotions from "@/sections/Promotions";
 import CustomSection from "@/components/CustomSection";
 import ProductsSectionSekeleton from "@/components/skeletons/ProductsSectionSkeleton";
 
-export default function Home() {
+export default function Category({ params }: { params: { productId: string } }) {
+  const { productId } = params
+
   return (
     <main>
       <section>
@@ -13,9 +15,9 @@ export default function Home() {
       </section>
 
       <CustomSection className="relative !p-0 !m-auto flex">
-        <div className="absolute w-full max-w-screen-xl -top-14">
+        <div className="absolute w-full max-w-screen-xl px-6 -top-14">
           <div className="px-6 py-3 bg-[rgb(var(--my-bg-color))] rounded-t-xl">
-            <h1 className="text-2xl md:text-3xl  font-semibold">Get all you need</h1>
+            <h1 className="text-2xl font-semibold">{productId}</h1>
           </div>
         </div>
       </CustomSection>
@@ -32,8 +34,10 @@ export default function Home() {
         </div>
       </CustomSection>
 
-      <CustomSection sectionClassName="bg-gradient-to-b from-[#333] to-[#111] py-16">
-        <Promotions />
+      <CustomSection className="bg-gradient-to-b from-[#333] to-[#111] !max-w-[none] !px-0 py-16">
+        <div className="max-w-screen-xl px-6 m-auto">
+          <Promotions />
+        </div>
       </CustomSection>
 
       <CustomSection className="flex flex-col gap-4 md:gap-8 md:flex-row-reverse">
@@ -76,12 +80,10 @@ export default function Home() {
             <form className="flex items-center w-full gap-2 p-1 bg-white rounded-2xl">
               <label htmlFor="email" className="w-2/3 p-1 text-gray-950">
                 <input
-                  id="email"
                   type="email"
                   name="email"
                   placeholder="Enter your email"
                   className="w-full focus:outline-none"
-                  autoComplete="email"
                 />
               </label>
               <button className="w-1/3 p-1 bg-black rounded-2xl" type="submit">
