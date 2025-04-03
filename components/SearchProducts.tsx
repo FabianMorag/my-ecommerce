@@ -107,11 +107,11 @@ export default function SearchProducts() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 mb-8 sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-6">
+        <div className="grid grid-cols-1 gap-4 mb-8 justify-items-center sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-6">
           {products?.map(({ id, title, thumbnail, price }) => (
-            <Link key={id} href="#">
+            <Link key={id} href="#" className="w-full">
               <Card
-                className="border-none outline-none"
+                className="w-full border-none outline-none"
                 shadow="none"
                 isPressable
                 onPress={() => console.log("item pressed")}
