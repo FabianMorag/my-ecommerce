@@ -108,15 +108,15 @@ export default function SearchProducts() {
         </div>
 
         <div className="grid grid-cols-1 gap-4 mb-8 justify-items-center sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-6">
-          {products?.map(({ id, title, thumbnail, price }) => (
-            <Link key={id} href="#" className="w-full">
-              <Card
-                className="w-full border-none outline-none"
-                shadow="none"
-                isPressable
-                onPress={() => console.log("item pressed")}
-              >
-                <CardBody className="p-0 overflow-visible ">
+          {products?.map(({ id, title, thumbnail, price, rating }) => (
+            <Card
+              key={id}
+              className="w-full border-none outline-none"
+              shadow="none"
+              onPress={() => console.log("item pressed")}
+            >
+              <CardBody className="p-0 overflow-visible ">
+                <Link href="#" className="w-full">
                   <Image
                     alt={title}
                     className="object-cover w-full bg-gray-100 aspect-square"
@@ -124,13 +124,45 @@ export default function SearchProducts() {
                     src={thumbnail}
                     width="100%"
                   />
-                </CardBody>
-                <CardFooter className="justify-between text-small">
-                  <b>{title}</b>
-                  <p className="text-gray-500">{price}</p>
-                </CardFooter>
-              </Card>
-            </Link>
+                </Link>
+              </CardBody>
+              <CardFooter className="flex flex-col items-start gap-2 text-md">
+                <b>{title}</b>
+                <div className="flex items-center justify-between w-full gap-2">
+                  <div className="flex items-center gap-1 text-gray-500">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width={24}
+                      height={24}
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="icon icon-tabler icons-tabler-outline icon-tabler-star"
+                    >
+                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                      <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                    </svg>
+                    <span className="text-sm">{rating}</span>
+                  </div>
+                  <b>${price}</b>
+                </div>
+                <div className="flex w-full gap-1">
+                  <Button
+                    className="w-full bg-gray-50"
+                    variant="bordered"
+                    radius="full"
+                  >
+                    Add to cart
+                  </Button>
+                  <Button className="w-full text-white bg-black" radius="full">
+                    Buy now
+                  </Button>
+                </div>
+              </CardFooter>
+            </Card>
           ))}
         </div>
 
